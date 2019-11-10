@@ -13,7 +13,7 @@
 	<!-- 引用dubbo 服务 -->
 	<dubbo:application name="${dubbo.application}" />
 	<dubbo:registry protocol="zookeeper" address="${zk.address}"/>
-	<dubbo:annotation package="com.qingcheng.controller" />
+	<dubbo:annotation package="com.xshop.controller" />
 
 
 	<dubbo:consumer timeout="8000" retries="0" check="false"/>
