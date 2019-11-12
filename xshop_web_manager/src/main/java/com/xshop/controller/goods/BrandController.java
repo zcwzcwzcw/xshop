@@ -1,4 +1,4 @@
-package com.xshop.controller;
+package com.xshop.controller.goods;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.xshop.entity.CommonResponse;
@@ -81,7 +81,7 @@ public class BrandController {
      * 根据id删除品牌
      */
     @PostMapping("/delete.do")
-    public CommonResponse<Brand> delete(@RequestBody Brand brand) {
-        return brandService.delete(brand.getId());
+    public CommonResponse<Brand> delete(Integer id) {
+        return brandService.delete(id);
     }
 }
