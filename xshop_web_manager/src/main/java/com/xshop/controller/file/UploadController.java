@@ -1,11 +1,12 @@
 package com.xshop.controller.file;
 
+import com.alibaba.fastjson.JSONObject;
+import com.aliyun.oss.OSSClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import com.aliyun.oss.OSSClient;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -22,11 +23,8 @@ import java.util.UUID;
 public class UploadController {
     @Autowired
     private HttpServletRequest request;
-
-    private static String endpoint = "oss-cn-beijing.aliyuncs.com";
-    private static final String accessKeyId = "LTAI4Fp5w2rbzVf81J4asuTG";
-    private static final String secretAccessKey = "cadsChZN1juLUo1kEbW1vkHO7gem76";
-
+    @Autowired
+    private OSSClient ossClient;
 
     /**
      * 上传文件至本地
@@ -48,11 +46,9 @@ public class UploadController {
 
     /**
      * 上传文件至oss
-     * TODO 将OSSClient变为bean
      */
     @PostMapping("/oss.do")
     public String nativeOss(MultipartFile file, String folder) {
-        OSSClient ossClient = new OSSClient(endpoint, accessKeyId, secretAccessKey);
         String bucketName = "zcwmall";
         String fileName = folder + "/" + UUID.randomUUID() + file.getOriginalFilename();
         try {
@@ -60,8 +56,7 @@ public class UploadController {
         } catch (IOException e) {
             throw new RuntimeException("上传oss文件失败" + e.getMessage());
         }
-        System.out.println("图片");
-        return "https://" + bucketName + "." + endpoint + "/" + fileName;
+        return "https://" + bucketName + "." + ossClient.getEndpoint().getHost() + "/" + fileName;
     }
 
 
