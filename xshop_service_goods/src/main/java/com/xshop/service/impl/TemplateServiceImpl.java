@@ -18,43 +18,26 @@ public class TemplateServiceImpl implements TemplateService {
     @Autowired
     private TemplateMapper templateMapper;
 
-    /**
-     * 返回全部记录
-     * @return
-     */
+
+    @Override
     public List<Template> findAll() {
         return templateMapper.selectAll();
     }
 
-    /**
-     * 分页查询
-     * @param page 页码
-     * @param size 每页记录数
-     * @return 分页结果
-     */
+    @Override
     public PageResult<Template> findPage(int page, int size) {
         PageHelper.startPage(page,size);
         Page<Template> templates = (Page<Template>) templateMapper.selectAll();
         return new PageResult<Template>(templates.getTotal(),templates.getResult());
     }
 
-    /**
-     * 条件查询
-     * @param searchMap 查询条件
-     * @return
-     */
+    @Override
     public List<Template> findList(Map<String, Object> searchMap) {
         Example example = createExample(searchMap);
         return templateMapper.selectByExample(example);
     }
 
-    /**
-     * 分页+条件查询
-     * @param searchMap
-     * @param page
-     * @param size
-     * @return
-     */
+    @Override
     public PageResult<Template> findPage(Map<String, Object> searchMap, int page, int size) {
         PageHelper.startPage(page,size);
         Example example = createExample(searchMap);
@@ -62,45 +45,30 @@ public class TemplateServiceImpl implements TemplateService {
         return new PageResult<Template>(templates.getTotal(),templates.getResult());
     }
 
-    /**
-     * 根据Id查询
-     * @param id
-     * @return
-     */
+    @Override
     public Template findById(Integer id) {
         return templateMapper.selectByPrimaryKey(id);
     }
 
-    /**
-     * 新增
-     * @param template
-     */
+    @Override
     public void add(Template template) {
         template.setParaNum(0);
         template.setSpecNum(0);
         templateMapper.insert(template);
     }
 
-    /**
-     * 修改
-     * @param template
-     */
+    @Override
     public void update(Template template) {
         templateMapper.updateByPrimaryKeySelective(template);
     }
 
-    /**
-     *  删除
-     * @param id
-     */
+    @Override
     public void delete(Integer id) {
         templateMapper.deleteByPrimaryKey(id);
     }
 
     /**
      * 构建查询条件
-     * @param searchMap
-     * @return
      */
     private Example createExample(Map<String, Object> searchMap){
         Example example=new Example(Template.class);

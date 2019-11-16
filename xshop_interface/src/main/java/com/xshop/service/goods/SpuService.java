@@ -11,27 +11,48 @@ import java.util.Map;
  */
 public interface SpuService {
 
+    /**
+     * 返回全部记录
+     */
+    List<Spu> findAll();
 
-    public List<Spu> findAll();
+    /**
+     * 分页查询
+     * @param page 页码
+     * @param size 每页记录数
+     * @return 分页结果
+     */
+    PageResult<Spu> findPage(int page, int size);
 
+    /**
+     * 条件查询
+     * @param searchMap 查询条件
+     */
+    List<Spu> findList(Map<String, Object> searchMap);
 
-    public PageResult<Spu> findPage(int page, int size);
+    /**
+     * 分页+条件查询
+     */
+    PageResult<Spu> findPage(Map<String, Object> searchMap, int page, int size);
 
+    /**
+     * 根据Id查询
+     */
+    Spu findById(String id);
 
-    public List<Spu> findList(Map<String, Object> searchMap);
+    /**
+     * 新增
+     */
+    void add(Spu spu);
 
+    /**
+     * 修改
+     */
+    void update(Spu spu);
 
-    public PageResult<Spu> findPage(Map<String, Object> searchMap, int page, int size);
-
-
-    public Spu findById(String id);
-
-    public void add(Spu spu);
-
-
-    public void update(Spu spu);
-
-
-    public void delete(String id);
+    /**
+     *  删除
+     */
+    void delete(String id);
 
 }

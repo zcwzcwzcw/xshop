@@ -18,43 +18,26 @@ public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private CategoryMapper categoryMapper;
 
-    /**
-     * 返回全部记录
-     * @return
-     */
+
+    @Override
     public List<Category> findAll() {
         return categoryMapper.selectAll();
     }
 
-    /**
-     * 分页查询
-     * @param page 页码
-     * @param size 每页记录数
-     * @return 分页结果
-     */
+    @Override
     public PageResult<Category> findPage(int page, int size) {
         PageHelper.startPage(page,size);
         Page<Category> categorys = (Page<Category>) categoryMapper.selectAll();
         return new PageResult<Category>(categorys.getTotal(),categorys.getResult());
     }
 
-    /**
-     * 条件查询
-     * @param searchMap 查询条件
-     * @return
-     */
+    @Override
     public List<Category> findList(Map<String, Object> searchMap) {
         Example example = createExample(searchMap);
         return categoryMapper.selectByExample(example);
     }
 
-    /**
-     * 分页+条件查询
-     * @param searchMap
-     * @param page
-     * @param size
-     * @return
-     */
+    @Override
     public PageResult<Category> findPage(Map<String, Object> searchMap, int page, int size) {
         PageHelper.startPage(page,size);
         Example example = createExample(searchMap);
@@ -62,35 +45,22 @@ public class CategoryServiceImpl implements CategoryService {
         return new PageResult<Category>(categorys.getTotal(),categorys.getResult());
     }
 
-    /**
-     * 根据Id查询
-     * @param id
-     * @return
-     */
+    @Override
     public Category findById(Integer id) {
         return categoryMapper.selectByPrimaryKey(id);
     }
 
-    /**
-     * 新增
-     * @param category
-     */
+    @Override
     public void add(Category category) {
         categoryMapper.insert(category);
     }
 
-    /**
-     * 修改
-     * @param category
-     */
+    @Override
     public void update(Category category) {
         categoryMapper.updateByPrimaryKeySelective(category);
     }
 
-    /**
-     *  删除
-     * @param id
-     */
+    @Override
     public void delete(Integer id) {
         Example example = new Example(Category.class);
         Example.Criteria criteria = example.createCriteria();
@@ -104,8 +74,6 @@ public class CategoryServiceImpl implements CategoryService {
 
     /**
      * 构建查询条件
-     * @param searchMap
-     * @return
      */
     private Example createExample(Map<String, Object> searchMap){
         Example example=new Example(Category.class);

@@ -30,14 +30,14 @@
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="104857600" />
 		<property name="maxInMemorySize" value="4096" />
-		<property name="defaultEncoding" value="UTF-8"></property>
+		<property name="defaultEncoding" value="UTF-8"/>
 	</bean>
 
 	<!--阿里云OSS  -->
 	<bean id="ossClient" class="com.aliyun.oss.OSSClient">
-		<constructor-arg index="0" value="oss-cn-beijing.aliyuncs.com"></constructor-arg>
-		<constructor-arg index="1" value="AccessKeyID"></constructor-arg>
-		<constructor-arg index="2" value="AccessKeySecret"></constructor-arg>
+		<constructor-arg index="0" value="oss-cn-beijing.aliyuncs.com"/>
+		<constructor-arg index="1" value="AccessKeyID"/>
+		<constructor-arg index="2" value="AccessKeySecret"/>
 	</bean>
 
 </beans>

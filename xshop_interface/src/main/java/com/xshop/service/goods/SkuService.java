@@ -11,27 +11,48 @@ import java.util.Map;
  */
 public interface SkuService {
 
+    /**
+     * 返回全部记录
+     */
+    List<Sku> findAll();
+    
+    /**
+     * 分页查询
+     * @param page 页码
+     * @param size 每页记录数
+     * @return 分页结果
+     */
+    PageResult<Sku> findPage(int page, int size);
 
-    public List<Sku> findAll();
+    /**
+     * 条件查询
+     * @param searchMap 查询条件
+     */
+    List<Sku> findList(Map<String, Object> searchMap);
 
+    /**
+     * 分页+条件查询
+     */
+    PageResult<Sku> findPage(Map<String, Object> searchMap, int page, int size);
 
-    public PageResult<Sku> findPage(int page, int size);
+    /**
+     * 根据Id查询
+     */
+    Sku findById(String id);
 
+    /**
+     * 新增
+     */
+    void add(Sku sku);
 
-    public List<Sku> findList(Map<String, Object> searchMap);
+    /**
+     * 修改
+     */
+    void update(Sku sku);
 
-
-    public PageResult<Sku> findPage(Map<String, Object> searchMap, int page, int size);
-
-
-    public Sku findById(String id);
-
-    public void add(Sku sku);
-
-
-    public void update(Sku sku);
-
-
-    public void delete(String id);
+    /**
+     *  删除
+     */
+    void delete(String id);
 
 }

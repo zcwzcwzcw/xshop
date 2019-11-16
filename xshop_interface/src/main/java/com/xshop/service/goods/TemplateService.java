@@ -11,27 +11,48 @@ import java.util.Map;
  */
 public interface TemplateService {
 
+    /**
+     * 返回全部记录
+     */
+    List<Template> findAll();
 
-    public List<Template> findAll();
+    /**
+     * 分页查询
+     * @param page 页码
+     * @param size 每页记录数
+     * @return 分页结果
+     */
+    PageResult<Template> findPage(int page, int size);
 
+    /**
+     * 条件查询
+     * @param searchMap 查询条件
+     */
+    List<Template> findList(Map<String, Object> searchMap);
 
-    public PageResult<Template> findPage(int page, int size);
+    /**
+     * 分页+条件查询
+     */
+    PageResult<Template> findPage(Map<String, Object> searchMap, int page, int size);
 
+    /**
+     * 根据Id查询
+     */
+    Template findById(Integer id);
 
-    public List<Template> findList(Map<String, Object> searchMap);
+    /**
+     * 新增
+     */
+    void add(Template template);
 
+    /**
+     * 修改
+     */
+    void update(Template template);
 
-    public PageResult<Template> findPage(Map<String, Object> searchMap, int page, int size);
-
-
-    public Template findById(Integer id);
-
-    public void add(Template template);
-
-
-    public void update(Template template);
-
-
-    public void delete(Integer id);
+    /**
+     *  删除
+     */
+    void delete(Integer id);
 
 }

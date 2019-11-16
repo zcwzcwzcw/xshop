@@ -11,27 +11,48 @@ import java.util.Map;
  */
 public interface ParaService {
 
+    /**
+     * 返回全部记录
+     */
+    List<Para> findAll();
 
-    public List<Para> findAll();
+    /**
+     * 分页查询
+     * @param page 页码
+     * @param size 每页记录数
+     * @return 分页结果
+     */
+    PageResult<Para> findPage(int page, int size);
 
+    /**
+     * 条件查询
+     * @param searchMap 查询条件
+     */
+    List<Para> findList(Map<String, Object> searchMap);
 
-    public PageResult<Para> findPage(int page, int size);
+    /**
+     * 分页+条件查询
+     */
+    PageResult<Para> findPage(Map<String, Object> searchMap, int page, int size);
 
+    /**
+     * 根据Id查询
+     */
+    Para findById(Integer id);
 
-    public List<Para> findList(Map<String, Object> searchMap);
+    /**
+     * 新增
+     */
+    void add(Para para);
 
+    /**
+     * 修改
+     */
+    void update(Para para);
 
-    public PageResult<Para> findPage(Map<String, Object> searchMap, int page, int size);
-
-
-    public Para findById(Integer id);
-
-    public void add(Para para);
-
-
-    public void update(Para para);
-
-
-    public void delete(Integer id);
+    /**
+     *  删除
+     */
+    void delete(Integer id);
 
 }

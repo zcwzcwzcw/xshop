@@ -1,6 +1,5 @@
 package com.xshop.controller.file;
 
-import com.alibaba.fastjson.JSONObject;
 import com.aliyun.oss.OSSClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

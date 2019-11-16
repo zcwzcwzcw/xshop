@@ -11,27 +11,48 @@ import java.util.Map;
  */
 public interface CategoryService {
 
+    /**
+     * 返回全部记录
+     */
+    List<Category> findAll();
 
-    public List<Category> findAll();
+    /**
+     * 分页查询
+     * @param page 页码
+     * @param size 每页记录数
+     * @return 分页结果
+     */
+    PageResult<Category> findPage(int page, int size);
 
+    /**
+     * 条件查询
+     * @param searchMap 查询条件
+     */
+    List<Category> findList(Map<String, Object> searchMap);
 
-    public PageResult<Category> findPage(int page, int size);
+    /**
+     * 分页+条件查询
+     */
+    PageResult<Category> findPage(Map<String, Object> searchMap, int page, int size);
 
+    /**
+     * 根据Id查询
+     */
+    Category findById(Integer id);
 
-    public List<Category> findList(Map<String, Object> searchMap);
+    /**
+     * 新增
+     */
+    void add(Category category);
 
+    /**
+     * 修改
+     */
+    void update(Category category);
 
-    public PageResult<Category> findPage(Map<String, Object> searchMap, int page, int size);
-
-
-    public Category findById(Integer id);
-
-    public void add(Category category);
-
-
-    public void update(Category category);
-
-
-    public void delete(Integer id);
+    /**
+     *  删除
+     */
+    void delete(Integer id);
 
 }

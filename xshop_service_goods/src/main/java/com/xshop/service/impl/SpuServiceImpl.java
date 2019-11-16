@@ -18,43 +18,26 @@ public class SpuServiceImpl implements SpuService {
     @Autowired
     private SpuMapper spuMapper;
 
-    /**
-     * 返回全部记录
-     * @return
-     */
+
+    @Override
     public List<Spu> findAll() {
         return spuMapper.selectAll();
     }
 
-    /**
-     * 分页查询
-     * @param page 页码
-     * @param size 每页记录数
-     * @return 分页结果
-     */
+    @Override
     public PageResult<Spu> findPage(int page, int size) {
         PageHelper.startPage(page,size);
         Page<Spu> spus = (Page<Spu>) spuMapper.selectAll();
         return new PageResult<Spu>(spus.getTotal(),spus.getResult());
     }
 
-    /**
-     * 条件查询
-     * @param searchMap 查询条件
-     * @return
-     */
+    @Override
     public List<Spu> findList(Map<String, Object> searchMap) {
         Example example = createExample(searchMap);
         return spuMapper.selectByExample(example);
     }
 
-    /**
-     * 分页+条件查询
-     * @param searchMap
-     * @param page
-     * @param size
-     * @return
-     */
+    @Override
     public PageResult<Spu> findPage(Map<String, Object> searchMap, int page, int size) {
         PageHelper.startPage(page,size);
         Example example = createExample(searchMap);
@@ -62,43 +45,28 @@ public class SpuServiceImpl implements SpuService {
         return new PageResult<Spu>(spus.getTotal(),spus.getResult());
     }
 
-    /**
-     * 根据Id查询
-     * @param id
-     * @return
-     */
+    @Override
     public Spu findById(String id) {
         return spuMapper.selectByPrimaryKey(id);
     }
 
-    /**
-     * 新增
-     * @param spu
-     */
+    @Override
     public void add(Spu spu) {
         spuMapper.insert(spu);
     }
 
-    /**
-     * 修改
-     * @param spu
-     */
+    @Override
     public void update(Spu spu) {
         spuMapper.updateByPrimaryKeySelective(spu);
     }
 
-    /**
-     *  删除
-     * @param id
-     */
+    @Override
     public void delete(String id) {
         spuMapper.deleteByPrimaryKey(id);
     }
 
     /**
      * 构建查询条件
-     * @param searchMap
-     * @return
      */
     private Example createExample(Map<String, Object> searchMap){
         Example example=new Example(Spu.class);

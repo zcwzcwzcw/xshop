@@ -11,31 +11,55 @@ import java.util.Map;
  */
 public interface AlbumService {
 
+    /**
+     * 返回全部记录
+     */
+    List<Album> findAll();
 
-    public List<Album> findAll();
+    /**
+     * 分页查询
+     * @param page 页码
+     * @param size 每页记录数
+     * @return 分页结果
+     */
+    PageResult<Album> findPage(int page, int size);
 
+    /**
+     * 条件查询
+     *
+     * @param searchMap 查询条件
+     */
+    List<Album> findList(Map<String, Object> searchMap);
 
-    public PageResult<Album> findPage(int page, int size);
+    /**
+     * 分页+条件查询
+     *
+     */
+    PageResult<Album> findPage(Map<String, Object> searchMap, int page, int size);
 
+    /**
+     * 根据Id查询
+     */
+    Album findById(Long id);
 
-    public List<Album> findList(Map<String, Object> searchMap);
+    /**
+     * 新增
+     */
+    void add(Album album);
 
+    /**
+     * 修改
+     */
+    void update(Album album);
 
-    public PageResult<Album> findPage(Map<String, Object> searchMap, int page, int size);
-
-
-    public Album findById(Long id);
-
-    public void add(Album album);
-
-
-    public void update(Album album);
-
-
-    public void delete(Long id);
+    /**
+     * 删除
+     */
+    void delete(Long id);
 
     /**
      * 添加图片
      */
     void addImage(Integer id, String image);
+
 }

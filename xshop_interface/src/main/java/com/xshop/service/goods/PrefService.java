@@ -11,27 +11,48 @@ import java.util.Map;
  */
 public interface PrefService {
 
+    /**
+     * 返回全部记录
+     */
+    List<Pref> findAll();
 
-    public List<Pref> findAll();
+    /**
+     * 分页查询
+     * @param page 页码
+     * @param size 每页记录数
+     * @return 分页结果
+     */
+    PageResult<Pref> findPage(int page, int size);
 
+    /**
+     * 条件查询
+     * @param searchMap 查询条件
+     */
+    List<Pref> findList(Map<String, Object> searchMap);
 
-    public PageResult<Pref> findPage(int page, int size);
+    /**
+     * 分页+条件查询
+     */
+    PageResult<Pref> findPage(Map<String, Object> searchMap, int page, int size);
 
+    /**
+     * 根据Id查询
+     */
+    Pref findById(Integer id);
 
-    public List<Pref> findList(Map<String, Object> searchMap);
+    /**
+     * 新增
+     */
+    void add(Pref pref);
 
+    /**
+     * 修改
+     */
+    void update(Pref pref);
 
-    public PageResult<Pref> findPage(Map<String, Object> searchMap, int page, int size);
-
-
-    public Pref findById(Integer id);
-
-    public void add(Pref pref);
-
-
-    public void update(Pref pref);
-
-
-    public void delete(Integer id);
+    /**
+     *  删除
+     */
+    void delete(Integer id);
 
 }

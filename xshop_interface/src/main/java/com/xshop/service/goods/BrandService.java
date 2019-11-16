@@ -13,6 +13,7 @@ import java.util.Map;
  * @date 2019/11/9
  */
 public interface BrandService {
+
     /**
      * 查找所有品牌信息
      */
@@ -52,4 +53,5 @@ public interface BrandService {
      * 根据id删除品牌
      */
     CommonResponse<Brand> delete(Integer id);
+
 }
