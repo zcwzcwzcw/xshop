@@ -1,6 +1,7 @@
 package com.xshop.service.goods;
 
 import com.xshop.entity.PageResult;
+import com.xshop.pojo.goods.GoodsDTO;
 import com.xshop.pojo.goods.Spu;
 
 import java.util.List;
@@ -55,4 +56,8 @@ public interface SpuService {
      */
     void delete(String id);
 
+    /**
+     * 保存商品
+     */
+    void saveGoods(GoodsDTO goodsDTO);
 }

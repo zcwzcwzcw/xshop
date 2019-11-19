@@ -1,22 +1,38 @@
 package com.xshop.service.impl;
 import com.alibaba.dubbo.config.annotation.Service;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.xshop.dao.SpuMapper;
 import com.xshop.entity.PageResult;
+import com.xshop.pojo.goods.Category;
+import com.xshop.pojo.goods.GoodsDTO;
+import com.xshop.pojo.goods.Sku;
 import com.xshop.pojo.goods.Spu;
+import com.xshop.service.goods.CategoryService;
+import com.xshop.service.goods.SkuService;
 import com.xshop.service.goods.SpuService;
+import com.xshop.util.IdWork;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-@Service
+@Service(interfaceClass = SpuService.class)
 public class SpuServiceImpl implements SpuService {
 
     @Autowired
     private SpuMapper spuMapper;
+    @Autowired
+    private IdWork idWork;
+    @Autowired
+    private CategoryService categoryService;
+    @Autowired
+    private SkuService skuService;
 
 
     @Override
@@ -65,6 +81,36 @@ public class SpuServiceImpl implements SpuService {
         spuMapper.deleteByPrimaryKey(id);
     }
 
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void saveGoods(GoodsDTO goodsDTO) {
+        Spu spu = goodsDTO.getSpu();
+        spu.setId(idWork.nextId() + "");
+        spuMapper.insert(spu);
+
+        Date date = new Date();
+        Category category = categoryService.findById(spu.getCategory3Id());
+        List<Sku> skuList = goodsDTO.getSkuList();
+        skuList.forEach(sku -> {
+            StringBuilder skuName = new StringBuilder(sku.getName());
+            Map specMap = JSON.parseObject(sku.getSpec(), Map.class);
+            specMap.values().forEach(v-> {
+                skuName.append(" ").append(v);
+            });
+
+            sku.setName(skuName.toString());
+            sku.setId(idWork.nextId() + "");
+            sku.setSpuId(spu.getId());
+            sku.setCreateTime(date);
+            sku.setUpdateTime(date);
+            sku.setCategoryId(category.getId());
+            sku.setCategoryName(category.getName());
+            sku.setCommentNum(0);
+            sku.setSaleNum(0);
+            skuService.add(sku);
+        });
+    }
+
     /**
      * 构建查询条件
      */
@@ -72,10 +118,6 @@ public class SpuServiceImpl implements SpuService {
         Example example=new Example(Spu.class);
         Example.Criteria criteria = example.createCriteria();
         if(searchMap!=null){
-            // 主键
-            if(searchMap.get("id")!=null && !"".equals(searchMap.get("id"))){
-                criteria.andLike("id","%"+searchMap.get("id")+"%");
-            }
             // 货号
             if(searchMap.get("sn")!=null && !"".equals(searchMap.get("sn"))){
                 criteria.andLike("sn","%"+searchMap.get("sn")+"%");
@@ -87,30 +129,6 @@ public class SpuServiceImpl implements SpuService {
             // 副标题
             if(searchMap.get("caption")!=null && !"".equals(searchMap.get("caption"))){
                 criteria.andLike("caption","%"+searchMap.get("caption")+"%");
-            }
-            // 图片
-            if(searchMap.get("image")!=null && !"".equals(searchMap.get("image"))){
-                criteria.andLike("image","%"+searchMap.get("image")+"%");
-            }
-            // 图片列表
-            if(searchMap.get("images")!=null && !"".equals(searchMap.get("images"))){
-                criteria.andLike("images","%"+searchMap.get("images")+"%");
-            }
-            // 售后服务
-            if(searchMap.get("saleService")!=null && !"".equals(searchMap.get("saleService"))){
-                criteria.andLike("saleService","%"+searchMap.get("saleService")+"%");
-            }
-            // 介绍
-            if(searchMap.get("introduction")!=null && !"".equals(searchMap.get("introduction"))){
-                criteria.andLike("introduction","%"+searchMap.get("introduction")+"%");
-            }
-            // 规格列表
-            if(searchMap.get("specItems")!=null && !"".equals(searchMap.get("specItems"))){
-                criteria.andLike("specItems","%"+searchMap.get("specItems")+"%");
-            }
-            // 参数列表
-            if(searchMap.get("paraItems")!=null && !"".equals(searchMap.get("paraItems"))){
-                criteria.andLike("paraItems","%"+searchMap.get("paraItems")+"%");
             }
             // 是否上架
             if(searchMap.get("isMarketable")!=null && !"".equals(searchMap.get("isMarketable"))){
@@ -153,15 +171,6 @@ public class SpuServiceImpl implements SpuService {
             if(searchMap.get("freightId")!=null ){
                 criteria.andEqualTo("freightId",searchMap.get("freightId"));
             }
-            // 销量
-            if(searchMap.get("saleNum")!=null ){
-                criteria.andEqualTo("saleNum",searchMap.get("saleNum"));
-            }
-            // 评论数
-            if(searchMap.get("commentNum")!=null ){
-                criteria.andEqualTo("commentNum",searchMap.get("commentNum"));
-            }
-
         }
         return example;
     }

@@ -3,6 +3,7 @@ package com.xshop.controller.goods;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.xshop.entity.CommonResponse;
 import com.xshop.entity.PageResult;
+import com.xshop.pojo.goods.GoodsDTO;
 import com.xshop.pojo.goods.Spu;
 import com.xshop.service.goods.SpuService;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author zcw
+ */
 @RestController
 @RequestMapping("/spu")
 public class SpuController {
@@ -58,6 +62,15 @@ public class SpuController {
     @GetMapping("/delete")
     public CommonResponse delete(String id){
         spuService.delete(id);
+        return CommonResponse.success();
+    }
+
+    /**
+     * 添加商品
+     */
+    @PostMapping("/saveGoods")
+    public CommonResponse saveGoods(@RequestBody GoodsDTO goodsDTO) {
+        spuService.saveGoods(goodsDTO);
         return CommonResponse.success();
     }
 
