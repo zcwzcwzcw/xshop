@@ -1,5 +1,8 @@
 package com.xshop.util;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import java.lang.management.ManagementFactory;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -23,6 +26,7 @@ import java.net.NetworkInterface;
  * @author zcw
  * @date 2019/11/16
  */
+@Component
 public class IdWork {
     /** 时间起始标记点，作为基准，一般取系统的最近时间（一旦确定不能变动）*/
     private final static long twepoch = 1288834974657L;
@@ -47,20 +51,22 @@ public class IdWork {
     private static long lastTimestamp = -1L;
     /** 0，并发控制 */
     private long sequence = 0L;
-    private final long workerId;
+    @Value("${idWork.workerId}")
+    private long workerId;
     /** 数据标识id部分 */
-    private final long datacenterId;
+    @Value("${idWork.datacenterId}")
+    private long datacenterId;
 
-    public IdWork(){
+    /*public IdWork(){
         this.datacenterId = getDatacenterId(maxDatacenterId);
         this.workerId = getMaxWorkerId(datacenterId, maxWorkerId);
     }
-    /**
+    *//**
      * @param workerId
      *            工作机器ID
      * @param datacenterId
      *            序列号
-     */
+     *//*
     public IdWork(long workerId, long datacenterId) {
         if (workerId > maxWorkerId || workerId < 0) {
             throw new IllegalArgumentException(String.format("worker Id can't be greater than %d or less than 0", maxWorkerId));
@@ -70,7 +76,7 @@ public class IdWork {
         }
         this.workerId = workerId;
         this.datacenterId = datacenterId;
-    }
+    }*/
     /**
      * 获取下一个ID
      */

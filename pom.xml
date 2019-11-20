@@ -18,15 +18,22 @@
     </modules>
     <packaging>pom</packaging>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.3.RELEASE</version>
+        <relativePath/>
+    </parent>
+
     <!-- 集中定义依赖版本号 -->
     <properties>
         <junit.version>4.12</junit.version>
-        <spring.version>5.0.5.RELEASE</spring.version>
+<!--        <spring.version>5.0.5.RELEASE</spring.version>-->
         <pagehelper.version>4.1.4</pagehelper.version>
         <servlet-api.version>2.5</servlet-api.version>
-        <dubbo.version>2.6.0</dubbo.version>
+        <!--<dubbo.version>2.6.0</dubbo.version>
         <zookeeper.version>3.4.7</zookeeper.version>
-        <zkclient.version>0.1</zkclient.version>
+        <zkclient.version>0.1</zkclient.version>-->
         <mybatis.version>3.4.5</mybatis.version>
         <mybatis.spring.version>1.3.1</mybatis.spring.version>
         <mybatis.paginator.version>1.2.15</mybatis.paginator.version>
@@ -35,12 +42,30 @@
         <commons-fileupload.version>1.3.1</commons-fileupload.version>
         <spring.security.version>5.0.5.RELEASE</spring.security.version>
         <jackson.version>2.9.4</jackson.version>
+        <springboot.version>2.2.1.RELEASE</springboot.version>
+        <dubbo-start.version>0.2.0</dubbo-start.version>
     </properties>
     <!-- 依赖管理标签  必须加 -->
     <dependencyManagement>
         <dependencies>
-            <!-- Spring -->
             <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${springboot.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.boot</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo-start.version}</version>
+            </dependency>
+            <!-- Spring -->
+            <!--<dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
@@ -84,9 +109,9 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
                 <version>${spring.version}</version>
-            </dependency>
+            </dependency>-->
             <!-- dubbo相关 -->
-            <dependency>
+            <!--<dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>dubbo</artifactId>
                 <version>${dubbo.version}</version>
@@ -100,7 +125,7 @@
                 <groupId>com.github.sgroschupf</groupId>
                 <artifactId>zkclient</artifactId>
                 <version>${zkclient.version}</version>
-            </dependency>
+            </dependency>-->
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
@@ -161,7 +186,7 @@
                 <version>${commons-fileupload.version}</version>
             </dependency>
             <!-- 安全框架 -->
-            <dependency>
+            <!--<dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-web</artifactId>
                 <version>${spring.security.version}</version>
@@ -180,7 +205,7 @@
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-cas</artifactId>
                 <version>${spring.version}</version>
-            </dependency>
+            </dependency>-->
             <dependency>
                 <groupId>com.github.penggle</groupId>
                 <artifactId>kaptcha</artifactId>
@@ -231,8 +256,8 @@
             <!--通用Mapper-->
             <dependency>
                 <groupId>tk.mybatis</groupId>
-                <artifactId>mapper</artifactId>
-                <version>4.1.4</version>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>2.0.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>

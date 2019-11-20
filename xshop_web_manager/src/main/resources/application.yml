@@ -1,0 +1,18 @@
+#dubbo配置
+dubbo:
+  application:
+    name: manager
+  registry:
+    protocol: zookeeper
+    address: 192.168.111.129:2181
+  protocol:
+    name: dubbo
+    port: 20882
+  monitor:
+    protocol: registry
+
+#ossclient配置
+oss:
+  endpoint: wwww.baidu.com
+  accessKeyId: access key id
+  secretAccessKey: secret access key
