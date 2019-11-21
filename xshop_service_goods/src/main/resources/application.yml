@@ -1,4 +1,7 @@
-#spring配置
+server:
+  port: 9001
+
+#数据库配置
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource

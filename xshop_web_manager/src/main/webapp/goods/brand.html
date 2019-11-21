@@ -149,7 +149,7 @@
         },
         methods:{
             fetchData() {
-                axios.post(`/brand/findPage.do?page=${this.currentPage}&size=${this.size}`, this.searchMap).then(response => {
+                axios.post(`http://localhost:9101/brand/findPage.do?page=${this.currentPage}&size=${this.size}`, this.searchMap).then(response => {
                     this.tableData = response.data.rows;
                     this.total = response.data.total
                 })

@@ -1,3 +1,6 @@
+server:
+  port: 9101
+
 #dubbo配置
 dubbo:
   application:
