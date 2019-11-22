@@ -61,3 +61,19 @@ xshop 						-- 父工程，声明版本信息
 
 ### 核心技术
 
+
+
+
+
+### 开发软件
+
+- IDEA，代码开发
+- Git，版本管理
+- Docker，MySQL、Zookeeper、Redis等软件安装媒介
+- Final Shell，ssh连接工具
+- MySQL Workbench，MySQL数据库可视化
+- Open Office，绘图工具
+- Visual Studio Code，前端代码开发
+- Maven，依赖管理
+- Typora，Markdown文档工具
+
