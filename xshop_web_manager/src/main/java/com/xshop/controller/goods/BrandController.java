@@ -66,7 +66,7 @@ public class BrandController {
     public CommonResponse<Brand> update(@RequestBody Brand brand) {
         return brandService.update(brand);
     }
-    
+
     @ApiOperation("根据id删除品牌")
     @PostMapping("/delete.do")
     public CommonResponse<Brand> delete(Integer id) {
