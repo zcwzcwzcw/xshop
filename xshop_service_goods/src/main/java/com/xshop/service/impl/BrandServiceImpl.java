@@ -10,7 +10,6 @@ import com.xshop.pojo.goods.Brand;
 import com.xshop.service.goods.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.PostMapping;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.Arrays;
