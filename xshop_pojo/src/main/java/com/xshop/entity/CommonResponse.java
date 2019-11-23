@@ -1,6 +1,6 @@
 package com.xshop.entity;
 
-import com.xshop.constant.CommonCode;
+import com.xshop.constant.StatusCode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -23,7 +23,7 @@ public class CommonResponse<T> implements Serializable {
 
 
     public static <T> CommonResponse<T> success(T data, String msg) {
-        return new CommonResponse<T>(CommonCode.SUCCESS.getCode(), data, msg);
+        return new CommonResponse<T>(StatusCode.SUCCESS.getCode(), data, msg);
     }
 
     public static <T> CommonResponse<T> success(T data) {
@@ -47,6 +47,6 @@ public class CommonResponse<T> implements Serializable {
     }
 
     public static <T> CommonResponse<T> error(String msg) {
-        return error(CommonCode.ERROR.getCode(), msg);
+        return error(StatusCode.ERROR.getCode(), msg);
     }
 }

@@ -10,7 +10,7 @@ import lombok.Getter;
  */
 @AllArgsConstructor
 @Getter
-public enum CommonCode {
+public enum StatusCode {
     // 状态信息
     SUCCESS(0, "成功"),
     ERROR(-1, "错误"),

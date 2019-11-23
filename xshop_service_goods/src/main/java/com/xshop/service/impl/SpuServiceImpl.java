@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.xshop.dao.SpuMapper;
+import com.xshop.entity.BusinessException;
 import com.xshop.entity.PageResult;
 import com.xshop.pojo.goods.Category;
 import com.xshop.pojo.goods.GoodsDTO;
@@ -90,6 +91,9 @@ public class SpuServiceImpl implements SpuService {
 
         Date date = new Date();
         Category category = categoryService.findById(spu.getCategory3Id());
+        if (category == null) {
+            throw new BusinessException("分类不存在，id=" + spu.getCategory3Id());
+        }
         List<Sku> skuList = goodsDTO.getSkuList();
         skuList.forEach(sku -> {
             StringBuilder skuName = new StringBuilder(sku.getName());

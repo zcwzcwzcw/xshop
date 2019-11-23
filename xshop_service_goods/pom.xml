@@ -15,11 +15,6 @@
     <dependencies>
         <dependency>
             <groupId>com.xshop</groupId>
-            <artifactId>xshop_interface</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.xshop</groupId>
             <artifactId>xshop_common_service</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

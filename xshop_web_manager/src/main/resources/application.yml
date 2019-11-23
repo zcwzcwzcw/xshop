@@ -11,8 +11,6 @@ dubbo:
   protocol:
     name: dubbo
     port: 20882
-  monitor:
-    protocol: registry
 
 #ossclient配置
 oss:
