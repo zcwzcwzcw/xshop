@@ -28,11 +28,11 @@ import java.net.NetworkInterface;
  */
 @Component
 public class IdWork {
-    /** 时间起始标记点，作为基准，一般取系统的最近时间（一旦确定不能变动）*/
+    /** 时间起始标记点，作为基准，一般取系统的最近时间（一旦确定不能变动） */
     private final static long twepoch = 1288834974657L;
     /** 机器标识位数 */
     private final static long workerIdBits = 5L;
-    /** 数据中心标识位数*/
+    /** 数据中心标识位数 */
     private final static long datacenterIdBits = 5L;
     /** 机器ID最大值 */
     private final static long maxWorkerId = -1L ^ (-1L << workerIdBits);
@@ -77,10 +77,11 @@ public class IdWork {
         this.workerId = workerId;
         this.datacenterId = datacenterId;
     }*/
+
     /**
-     * 获取下一个ID
+     * 获取下一个ID TODO 将对应的数据库字段转化为Long类型
      */
-    public synchronized long nextId() {
+    public synchronized Long nextId() {
         long timestamp = timeGen();
         if (timestamp < lastTimestamp) {
             throw new RuntimeException(String.format("Clock moved backwards.  Refusing to generate id for %d milliseconds", lastTimestamp - timestamp));

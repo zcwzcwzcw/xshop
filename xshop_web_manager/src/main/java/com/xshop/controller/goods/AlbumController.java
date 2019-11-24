@@ -21,45 +21,45 @@ public class AlbumController {
     private AlbumService albumService;
 
     @GetMapping("/findAll")
-    public List<Album> findAll(){
+    public List<Album> findAll() {
         return albumService.findAll();
     }
 
     @GetMapping("/findPage")
-    public PageResult<Album> findPage(int page, int size){
+    public PageResult<Album> findPage(int page, int size) {
         return albumService.findPage(page, size);
     }
 
     @PostMapping("/findList")
-    public List<Album> findList(@RequestBody Map<String,Object> searchMap){
+    public List<Album> findList(@RequestBody Map<String, Object> searchMap) {
         return albumService.findList(searchMap);
     }
 
     @PostMapping("/findPage")
-    public PageResult<Album> findPage(@RequestBody Map<String,Object> searchMap, int page, int size){
-        return  albumService.findPage(searchMap,page,size);
+    public PageResult<Album> findPage(@RequestBody Map<String, Object> searchMap, int page, int size) {
+        return albumService.findPage(searchMap, page, size);
     }
 
     @GetMapping("/findById")
-    public Album findById(Long id){
+    public Album findById(Long id) {
         return albumService.findById(id);
     }
 
 
     @PostMapping("/add")
-    public CommonResponse add(@RequestBody Album album){
+    public CommonResponse add(@RequestBody Album album) {
         albumService.add(album);
         return CommonResponse.success();
     }
 
     @PostMapping("/update")
-    public CommonResponse update(@RequestBody Album album){
+    public CommonResponse update(@RequestBody Album album) {
         albumService.update(album);
         return CommonResponse.success();
     }
 
     @GetMapping("/delete")
-    public CommonResponse delete(Long id){
+    public CommonResponse delete(Long id) {
         albumService.delete(id);
         return CommonResponse.success();
     }

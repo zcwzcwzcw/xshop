@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 /**
  * 应用启动类
+ *
  * @author zcw
  * @date 2019/11/19
  */

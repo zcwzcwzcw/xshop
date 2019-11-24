@@ -1,4 +1,5 @@
 package com.xshop.service.impl;
+
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -25,9 +26,9 @@ public class PrefServiceImpl implements PrefService {
 
     @Override
     public PageResult<Pref> findPage(int page, int size) {
-        PageHelper.startPage(page,size);
+        PageHelper.startPage(page, size);
         Page<Pref> prefs = (Page<Pref>) prefMapper.selectAll();
-        return new PageResult<Pref>(prefs.getTotal(),prefs.getResult());
+        return new PageResult<Pref>(prefs.getTotal(), prefs.getResult());
     }
 
     @Override
@@ -38,10 +39,10 @@ public class PrefServiceImpl implements PrefService {
 
     @Override
     public PageResult<Pref> findPage(Map<String, Object> searchMap, int page, int size) {
-        PageHelper.startPage(page,size);
+        PageHelper.startPage(page, size);
         Example example = createExample(searchMap);
         Page<Pref> prefs = (Page<Pref>) prefMapper.selectByExample(example);
-        return new PageResult<Pref>(prefs.getTotal(),prefs.getResult());
+        return new PageResult<Pref>(prefs.getTotal(), prefs.getResult());
     }
 
     @Override
@@ -67,34 +68,34 @@ public class PrefServiceImpl implements PrefService {
     /**
      * 构建查询条件
      */
-    private Example createExample(Map<String, Object> searchMap){
-        Example example=new Example(Pref.class);
+    private Example createExample(Map<String, Object> searchMap) {
+        Example example = new Example(Pref.class);
         Example.Criteria criteria = example.createCriteria();
-        if(searchMap!=null){
+        if (searchMap != null) {
             // 类型
-            if(searchMap.get("type")!=null && !"".equals(searchMap.get("type"))){
-                criteria.andLike("type","%"+searchMap.get("type")+"%");
+            if (searchMap.get("type") != null && !"".equals(searchMap.get("type"))) {
+                criteria.andLike("type", "%" + searchMap.get("type") + "%");
             }
             // 状态
-            if(searchMap.get("state")!=null && !"".equals(searchMap.get("state"))){
-                criteria.andLike("state","%"+searchMap.get("state")+"%");
+            if (searchMap.get("state") != null && !"".equals(searchMap.get("state"))) {
+                criteria.andLike("state", "%" + searchMap.get("state") + "%");
             }
 
             // ID
-            if(searchMap.get("id")!=null ){
-                criteria.andEqualTo("id",searchMap.get("id"));
+            if (searchMap.get("id") != null) {
+                criteria.andEqualTo("id", searchMap.get("id"));
             }
             // 分类ID
-            if(searchMap.get("cateId")!=null ){
-                criteria.andEqualTo("cateId",searchMap.get("cateId"));
+            if (searchMap.get("cateId") != null) {
+                criteria.andEqualTo("cateId", searchMap.get("cateId"));
             }
             // 消费金额
-            if(searchMap.get("buyMoney")!=null ){
-                criteria.andEqualTo("buyMoney",searchMap.get("buyMoney"));
+            if (searchMap.get("buyMoney") != null) {
+                criteria.andEqualTo("buyMoney", searchMap.get("buyMoney"));
             }
             // 优惠金额
-            if(searchMap.get("preMoney")!=null ){
-                criteria.andEqualTo("preMoney",searchMap.get("preMoney"));
+            if (searchMap.get("preMoney") != null) {
+                criteria.andEqualTo("preMoney", searchMap.get("preMoney"));
             }
 
         }

@@ -18,6 +18,7 @@ public interface AlbumService {
 
     /**
      * 分页查询
+     *
      * @param page 页码
      * @param size 每页记录数
      * @return 分页结果
@@ -33,7 +34,6 @@ public interface AlbumService {
 
     /**
      * 分页+条件查询
-     *
      */
     PageResult<Album> findPage(Map<String, Object> searchMap, int page, int size);
 

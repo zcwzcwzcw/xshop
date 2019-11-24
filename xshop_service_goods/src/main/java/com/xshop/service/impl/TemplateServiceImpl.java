@@ -1,4 +1,5 @@
 package com.xshop.service.impl;
+
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -26,9 +27,9 @@ public class TemplateServiceImpl implements TemplateService {
 
     @Override
     public PageResult<Template> findPage(int page, int size) {
-        PageHelper.startPage(page,size);
+        PageHelper.startPage(page, size);
         Page<Template> templates = (Page<Template>) templateMapper.selectAll();
-        return new PageResult<Template>(templates.getTotal(),templates.getResult());
+        return new PageResult<Template>(templates.getTotal(), templates.getResult());
     }
 
     @Override
@@ -39,10 +40,10 @@ public class TemplateServiceImpl implements TemplateService {
 
     @Override
     public PageResult<Template> findPage(Map<String, Object> searchMap, int page, int size) {
-        PageHelper.startPage(page,size);
+        PageHelper.startPage(page, size);
         Example example = createExample(searchMap);
         Page<Template> templates = (Page<Template>) templateMapper.selectByExample(example);
-        return new PageResult<Template>(templates.getTotal(),templates.getResult());
+        return new PageResult<Template>(templates.getTotal(), templates.getResult());
     }
 
     @Override
@@ -70,26 +71,26 @@ public class TemplateServiceImpl implements TemplateService {
     /**
      * 构建查询条件
      */
-    private Example createExample(Map<String, Object> searchMap){
-        Example example=new Example(Template.class);
+    private Example createExample(Map<String, Object> searchMap) {
+        Example example = new Example(Template.class);
         Example.Criteria criteria = example.createCriteria();
-        if(searchMap!=null){
+        if (searchMap != null) {
             // 模板名称
-            if(searchMap.get("name")!=null && !"".equals(searchMap.get("name"))){
-                criteria.andLike("name","%"+searchMap.get("name")+"%");
+            if (searchMap.get("name") != null && !"".equals(searchMap.get("name"))) {
+                criteria.andLike("name", "%" + searchMap.get("name") + "%");
             }
 
             // ID
-            if(searchMap.get("id")!=null ){
-                criteria.andEqualTo("id",searchMap.get("id"));
+            if (searchMap.get("id") != null) {
+                criteria.andEqualTo("id", searchMap.get("id"));
             }
             // 规格数量
-            if(searchMap.get("specNum")!=null ){
-                criteria.andEqualTo("specNum",searchMap.get("specNum"));
+            if (searchMap.get("specNum") != null) {
+                criteria.andEqualTo("specNum", searchMap.get("specNum"));
             }
             // 参数数量
-            if(searchMap.get("paraNum")!=null ){
-                criteria.andEqualTo("paraNum",searchMap.get("paraNum"));
+            if (searchMap.get("paraNum") != null) {
+                criteria.andEqualTo("paraNum", searchMap.get("paraNum"));
             }
 
         }

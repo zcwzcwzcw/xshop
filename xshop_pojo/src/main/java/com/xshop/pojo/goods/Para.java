@@ -1,4 +1,5 @@
 package com.xshop.pojo.goods;
+
 import lombok.Data;
 
 import javax.persistence.Id;
@@ -7,24 +8,25 @@ import java.io.Serializable;
 
 /**
  * para实体类
+ *
  * @author zcw
  */
 @Data
-@Table(name="tb_para")
-public class Para implements Serializable{
-	/** id */
-	@Id
-	private Integer id;
+@Table(name = "tb_para")
+public class Para implements Serializable {
+    /** id */
+    @Id
+    private Integer id;
 
-	/** 名称 */
-	private String name;
+    /** 名称 */
+    private String name;
 
-	/** 选项 */
-	private String options;
+    /** 选项 */
+    private String options;
 
-	/** 排序 */
-	private Integer seq;
+    /** 排序 */
+    private Integer seq;
 
-	/** 模板ID */
-	private Integer templateId;
+    /** 模板ID */
+    private Integer templateId;
 }

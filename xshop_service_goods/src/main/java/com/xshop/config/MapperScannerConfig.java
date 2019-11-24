@@ -6,6 +6,7 @@ import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 
 /**
  * mybatis mapper扫描配置类
+ *
  * @author zcw
  * @date 2019/11/20
  */

@@ -9,8 +9,8 @@ import com.xshop.dao.AlbumMapper;
 import com.xshop.entity.PageResult;
 import com.xshop.pojo.goods.Album;
 import com.xshop.service.goods.AlbumService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
@@ -70,7 +70,7 @@ public class AlbumServiceImpl implements AlbumService {
 
     @Override
     public void addImage(Integer id, String image) {
-        if (id == null || StringUtils.isEmpty(image)) {
+        if (id == null || StringUtils.isBlank(image)) {
             throw new RuntimeException("参数错误");
         }
         Album album = albumMapper.selectByPrimaryKey(id);

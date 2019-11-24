@@ -18,6 +18,7 @@ import java.util.Map;
 
 /**
  * 品牌服务实现类
+ *
  * @author zcw
  * @date 2019/11/9
  */
@@ -76,7 +77,7 @@ public class BrandServiceImpl implements BrandService {
     @SuppressWarnings("all")
     public CommonResponse<Brand> delete(Integer id) {
         int r = brandMapper.deleteByPrimaryKey(id);
-        return r > 0? CommonResponse.success("删除成功") : CommonResponse.error("删除失败");
+        return r > 0 ? CommonResponse.success("删除成功") : CommonResponse.error("删除失败");
     }
 
     /**

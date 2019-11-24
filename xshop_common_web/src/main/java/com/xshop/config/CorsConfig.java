@@ -8,6 +8,7 @@ import org.springframework.web.filter.CorsFilter;
 
 /**
  * 跨域配置
+ *
  * @author zcw
  * @date 2019/11/22
  */

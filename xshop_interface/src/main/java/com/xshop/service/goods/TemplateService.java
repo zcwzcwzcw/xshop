@@ -18,6 +18,7 @@ public interface TemplateService {
 
     /**
      * 分页查询
+     *
      * @param page 页码
      * @param size 每页记录数
      * @return 分页结果
@@ -26,6 +27,7 @@ public interface TemplateService {
 
     /**
      * 条件查询
+     *
      * @param searchMap 查询条件
      */
     List<Template> findList(Map<String, Object> searchMap);
@@ -51,7 +53,7 @@ public interface TemplateService {
     void update(Template template);
 
     /**
-     *  删除
+     * 删除
      */
     void delete(Integer id);
 

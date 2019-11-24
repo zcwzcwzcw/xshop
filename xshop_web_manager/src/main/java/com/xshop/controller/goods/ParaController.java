@@ -21,45 +21,45 @@ public class ParaController {
     private ParaService paraService;
 
     @GetMapping("/findAll")
-    public List<Para> findAll(){
+    public List<Para> findAll() {
         return paraService.findAll();
     }
 
     @GetMapping("/findPage")
-    public PageResult<Para> findPage(int page, int size){
+    public PageResult<Para> findPage(int page, int size) {
         return paraService.findPage(page, size);
     }
 
     @PostMapping("/findList")
-    public List<Para> findList(@RequestBody Map<String,Object> searchMap){
+    public List<Para> findList(@RequestBody Map<String, Object> searchMap) {
         return paraService.findList(searchMap);
     }
 
     @PostMapping("/findPage")
-    public PageResult<Para> findPage(@RequestBody Map<String,Object> searchMap, int page, int size){
-        return  paraService.findPage(searchMap,page,size);
+    public PageResult<Para> findPage(@RequestBody Map<String, Object> searchMap, int page, int size) {
+        return paraService.findPage(searchMap, page, size);
     }
 
     @GetMapping("/findById")
-    public Para findById(Integer id){
+    public Para findById(Integer id) {
         return paraService.findById(id);
     }
 
 
     @PostMapping("/add")
-    public CommonResponse add(@RequestBody Para para){
+    public CommonResponse add(@RequestBody Para para) {
         paraService.add(para);
         return CommonResponse.success();
     }
 
     @PostMapping("/update")
-    public CommonResponse update(@RequestBody Para para){
+    public CommonResponse update(@RequestBody Para para) {
         paraService.update(para);
         return CommonResponse.success();
     }
 
     @GetMapping("/delete")
-    public CommonResponse delete(Integer id){
+    public CommonResponse delete(Integer id) {
         paraService.delete(id);
         return CommonResponse.success();
     }

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * OOSClient配置类
+ *
  * @author zcw
  * @date 2019/11/20
  */

@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 /**
  * 通用异常
+ *
  * @author zcw
  * @date 2019/11/23
  */

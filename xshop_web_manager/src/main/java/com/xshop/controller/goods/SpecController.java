@@ -21,45 +21,45 @@ public class SpecController {
     private SpecService specService;
 
     @GetMapping("/findAll")
-    public List<Spec> findAll(){
+    public List<Spec> findAll() {
         return specService.findAll();
     }
 
     @GetMapping("/findPage")
-    public PageResult<Spec> findPage(int page, int size){
+    public PageResult<Spec> findPage(int page, int size) {
         return specService.findPage(page, size);
     }
 
     @PostMapping("/findList")
-    public List<Spec> findList(@RequestBody Map<String,Object> searchMap){
+    public List<Spec> findList(@RequestBody Map<String, Object> searchMap) {
         return specService.findList(searchMap);
     }
 
     @PostMapping("/findPage")
-    public PageResult<Spec> findPage(@RequestBody Map<String,Object> searchMap, int page, int size){
-        return  specService.findPage(searchMap,page,size);
+    public PageResult<Spec> findPage(@RequestBody Map<String, Object> searchMap, int page, int size) {
+        return specService.findPage(searchMap, page, size);
     }
 
     @GetMapping("/findById")
-    public Spec findById(Integer id){
+    public Spec findById(Integer id) {
         return specService.findById(id);
     }
 
 
     @PostMapping("/add")
-    public CommonResponse add(@RequestBody Spec spec){
+    public CommonResponse add(@RequestBody Spec spec) {
         specService.add(spec);
         return CommonResponse.success();
     }
 
     @PostMapping("/update")
-    public CommonResponse update(@RequestBody Spec spec){
+    public CommonResponse update(@RequestBody Spec spec) {
         specService.update(spec);
         return CommonResponse.success();
     }
 
     @GetMapping("/delete")
-    public CommonResponse delete(Integer id){
+    public CommonResponse delete(Integer id) {
         specService.delete(id);
         return CommonResponse.success();
     }

@@ -21,45 +21,45 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping("/findAll")
-    public List<Category> findAll(){
+    public List<Category> findAll() {
         return categoryService.findAll();
     }
 
     @GetMapping("/findPage")
-    public PageResult<Category> findPage(int page, int size){
+    public PageResult<Category> findPage(int page, int size) {
         return categoryService.findPage(page, size);
     }
 
     @PostMapping("/findList")
-    public List<Category> findList(@RequestBody Map<String,Object> searchMap){
+    public List<Category> findList(@RequestBody Map<String, Object> searchMap) {
         return categoryService.findList(searchMap);
     }
 
     @PostMapping("/findPage")
-    public PageResult<Category> findPage(@RequestBody Map<String,Object> searchMap, int page, int size){
-        return  categoryService.findPage(searchMap,page,size);
+    public PageResult<Category> findPage(@RequestBody Map<String, Object> searchMap, int page, int size) {
+        return categoryService.findPage(searchMap, page, size);
     }
 
     @GetMapping("/findById")
-    public Category findById(Integer id){
+    public Category findById(Integer id) {
         return categoryService.findById(id);
     }
 
 
     @PostMapping("/add")
-    public CommonResponse add(@RequestBody Category category){
+    public CommonResponse add(@RequestBody Category category) {
         categoryService.add(category);
         return CommonResponse.success();
     }
 
     @PostMapping("/update")
-    public CommonResponse update(@RequestBody Category category){
+    public CommonResponse update(@RequestBody Category category) {
         categoryService.update(category);
         return CommonResponse.success();
     }
 
     @GetMapping("/delete")
-    public CommonResponse delete(Integer id){
+    public CommonResponse delete(Integer id) {
         categoryService.delete(id);
         return CommonResponse.success();
     }

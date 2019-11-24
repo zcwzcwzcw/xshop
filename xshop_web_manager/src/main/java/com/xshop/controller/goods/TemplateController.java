@@ -21,45 +21,45 @@ public class TemplateController {
     private TemplateService templateService;
 
     @GetMapping("/findAll")
-    public List<Template> findAll(){
+    public List<Template> findAll() {
         return templateService.findAll();
     }
 
     @GetMapping("/findPage")
-    public PageResult<Template> findPage(int page, int size){
+    public PageResult<Template> findPage(int page, int size) {
         return templateService.findPage(page, size);
     }
 
     @PostMapping("/findList")
-    public List<Template> findList(@RequestBody Map<String,Object> searchMap){
+    public List<Template> findList(@RequestBody Map<String, Object> searchMap) {
         return templateService.findList(searchMap);
     }
 
     @PostMapping("/findPage")
-    public PageResult<Template> findPage(@RequestBody Map<String,Object> searchMap, int page, int size){
-        return  templateService.findPage(searchMap,page,size);
+    public PageResult<Template> findPage(@RequestBody Map<String, Object> searchMap, int page, int size) {
+        return templateService.findPage(searchMap, page, size);
     }
 
     @GetMapping("/findById")
-    public Template findById(Integer id){
+    public Template findById(Integer id) {
         return templateService.findById(id);
     }
 
 
     @PostMapping("/add")
-    public CommonResponse add(@RequestBody Template template){
+    public CommonResponse add(@RequestBody Template template) {
         templateService.add(template);
         return CommonResponse.success();
     }
 
     @PostMapping("/update")
-    public CommonResponse update(@RequestBody Template template){
+    public CommonResponse update(@RequestBody Template template) {
         templateService.update(template);
         return CommonResponse.success();
     }
 
     @GetMapping("/delete")
-    public CommonResponse delete(Integer id){
+    public CommonResponse delete(Integer id) {
         templateService.delete(id);
         return CommonResponse.success();
     }

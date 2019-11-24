@@ -19,6 +19,7 @@ public interface SpuService {
 
     /**
      * 分页查询
+     *
      * @param page 页码
      * @param size 每页记录数
      * @return 分页结果
@@ -27,6 +28,7 @@ public interface SpuService {
 
     /**
      * 条件查询
+     *
      * @param searchMap 查询条件
      */
     List<Spu> findList(Map<String, Object> searchMap);
@@ -52,12 +54,38 @@ public interface SpuService {
     void update(Spu spu);
 
     /**
-     *  删除
+     * 删除
      */
     void delete(String id);
 
     /**
-     * 保存商品
+     * 保存或修改商品
+     * 根据spuId和skuId判断是保存还是修改
      */
     void saveGoods(GoodsDTO goodsDTO);
+
+    /**
+     * 根据spuId查询商品
+     */
+    GoodsDTO findGoodsBySpuId(String spuId);
+
+    /**
+     * 审核商品
+     */
+    void audit(String spuId, String status, String message);
+
+    /**
+     * 商品下架
+     */
+    void pull(String spuId);
+
+    /**
+     * 商品上架
+     */
+    void put(String spuId);
+
+    /**
+     * 商品批量上架
+     */
+    int putMany(List<String> spuIds);
 }

@@ -15,9 +15,10 @@ public interface SkuService {
      * 返回全部记录
      */
     List<Sku> findAll();
-    
+
     /**
      * 分页查询
+     *
      * @param page 页码
      * @param size 每页记录数
      * @return 分页结果
@@ -26,6 +27,7 @@ public interface SkuService {
 
     /**
      * 条件查询
+     *
      * @param searchMap 查询条件
      */
     List<Sku> findList(Map<String, Object> searchMap);
@@ -41,6 +43,11 @@ public interface SkuService {
     Sku findById(String id);
 
     /**
+     * 根据spuId查询
+     */
+    List<Sku> findBySpuId(String spuId);
+
+    /**
      * 新增
      */
     void add(Sku sku);
@@ -51,8 +58,13 @@ public interface SkuService {
     void update(Sku sku);
 
     /**
-     *  删除
+     * 删除
      */
     void delete(String id);
+
+    /**
+     * 根据spuId删除
+     */
+    void deleteBySpuId(String spuId);
 
 }

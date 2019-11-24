@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 /**
  * album实体类
+ *
  * @author zcw
  */
 @Data
@@ -20,9 +21,9 @@ public class Album implements Serializable {
     /** 相册名称 */
     private String title;
 
-	/** 相册封面 */
+    /** 相册封面 */
     private String image;
 
-	/** 图片列表 */
+    /** 图片列表 */
     private String imageItems;
 }

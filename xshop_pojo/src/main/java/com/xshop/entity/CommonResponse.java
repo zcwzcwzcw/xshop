@@ -1,5 +1,6 @@
 package com.xshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.xshop.constant.StatusCode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,11 +9,13 @@ import java.io.Serializable;
 
 /**
  * 通用返回
+ *
  * @author zcw
  * @date 2019/11/11
  */
 @Data
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CommonResponse<T> implements Serializable {
     /** 状态码，0为成功，非0表示失败 */
     private Integer code;
@@ -35,7 +38,7 @@ public class CommonResponse<T> implements Serializable {
     }
 
     public static <T> CommonResponse<T> success() {
-        return success(null);
+        return success(null, StatusCode.SUCCESS.getMsg());
     }
 
     public static <T> CommonResponse<T> error(Integer code, T data, String msg) {
