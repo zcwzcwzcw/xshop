@@ -30,7 +30,7 @@
         <dubbo-start.version>0.2.0</dubbo-start.version>
         <mybatis-start.version>1.3.2</mybatis-start.version>
         <tk-mybatis-start.version>2.0.3</tk-mybatis-start.version>
-        <mysql.version>5.1.32</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <druid.version>1.0.9</druid.version>
         <pagehelper.version>5.1.2</pagehelper.version>
         <pagehelper-start.version>1.2.3</pagehelper-start.version>
