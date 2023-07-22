@@ -32,7 +32,7 @@
         <tk-mybatis-start.version>2.0.3</tk-mybatis-start.version>
         <mysql.version>5.1.32</mysql.version>
         <druid.version>1.0.9</druid.version>
-        <pagehelper.version>5.1.2</pagehelper.version>
+        <pagehelper.version>5.3.1</pagehelper.version>
         <pagehelper-start.version>1.2.3</pagehelper-start.version>
         <fastjson.version>1.2.47</fastjson.version>
         <oss.version>2.8.2</oss.version>
